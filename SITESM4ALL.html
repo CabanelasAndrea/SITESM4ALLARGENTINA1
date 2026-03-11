@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SM4ALL Argentina | Safe Mobility 4 All & 4 Life</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fia: {
+                            red: '#E10600',
+                            dark: '#0A0A0A',
+                            gray: '#1A1A1A',
+                            light: '#2A2A2A',
+                            accent: '#FFD700'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Orbitron', 'sans-serif'],
+                        tech: ['Rajdhani', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #E10600 0%, #FF6B35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-grid {
+            background-image: 
+                linear-gradient(rgba(225, 6, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(225, 6, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .glass-card {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(225, 6, 0, 0.2);
+        }
+        
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+        
+        .timeline-line {
+            background: linear-gradient(to bottom, #E10600, #FFD700);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(225, 6, 0, 0.2);
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.6s ease-out forwards;
+        }
+        
+        .checkered {
+            background-image: 
+                repeating-linear-gradient(45deg, #FFD700 0px, #FFD700 10px, transparent 10px, transparent 20px),
+                repeating-linear-gradient(-45deg, #FFD700 0px, #FFD700 10px, transparent 10px, transparent 20px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+    </style>
+<base target="_blank">
+</head>
+<body class="bg-fia-dark text-white font-body antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-fia-dark/95 backdrop-blur-md border-b border-fia-red/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 bg-fia-red rounded-lg flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="font-display font-bold text-lg tracking-wider">SM4ALL</div>
+                        <div class="font-tech text-xs text-gray-400 uppercase tracking-widest">Argentina</div>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="font-tech text-sm uppercase tracking-wider hover:text-fia-red transition-colors">Inicio</a>
+                    <a href="#proyecto" class="font-tech text-sm uppercase tracking-wider hover:text-fia-red transition-colors">El Proyecto</a>
+                    <a href="#avances" class="font-tech text-sm uppercase tracking-wider hover:text-fia-red transition-colors">Avances</a>
+                    <a href="#herramientas" class="font-tech text-sm uppercase tracking-wider hover:text-fia-red transition-colors">Herramientas</a>
+                    <a href="#datos" class="font-tech text-sm uppercase tracking-wider hover:text-fia-red transition-colors">Datos</a>
+                    <a href="#contacto" class="font-tech text-sm uppercase tracking-wider hover:text-fia-red transition-colors">Contacto</a>
+                </div>
+                
+                <button onclick="toggleMenu()" class="md:hidden text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-fia-gray border-t border-fia-red/20">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#inicio" class="block py-2 font-tech uppercase text-sm">Inicio</a>
+                <a href="#proyecto" class="block py-2 font-tech uppercase text-sm">El Proyecto</a>
+                <a href="#avances" class="block py-2 font-tech uppercase text-sm">Avances</a>
+                <a href="#herramientas" class="block py-2 font-tech uppercase text-sm">Herramientas</a>
+                <a href="#datos" class="block py-2 font-tech uppercase text-sm">Datos</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+        <div class="absolute inset-0 hero-grid opacity-30"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-fia-red/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-fia-accent/5 rounded-full blur-3xl"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 bg-fia-red/10 border border-fia-red/30 px-4 py-2 rounded-full mb-6">
+                <span class="w-2 h-2 bg-fia-red rounded-full animate-pulse"></span>
+                <span class="font-tech text-sm uppercase tracking-wider text-fia-red">Proyecto en Ejecución</span>
+            </div>
+            
+            <h1 class="font-display text-5xl md:text-7xl font-black mb-6 leading-tight">
+                SAFE MOBILITY<br>
+                <span class="gradient-text">4 ALL & 4 LIFE</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8 font-light">
+                Seguridad Vial para Motociclistas: Puntos Críticos e Infraestructura con Enfoque de Sistema Seguro
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#avances" class="bg-fia-red hover:bg-red-700 text-white font-display font-bold uppercase px-8 py-4 rounded-lg transition-all hover:scale-105 flex items-center gap-3">
+                    <i class="fas fa-chart-line"></i>
+                    Ver Avances
+                </a>
+                <a href="#mapa" class="border-2 border-white/30 hover:border-fia-red text-white font-display font-bold uppercase px-8 py-4 rounded-lg transition-all hover:bg-white/5 flex items-center gap-3">
+                    <i class="fas fa-map-marked-alt"></i>
+                    Explorar Mapa
+                </a>
+            </div>
+            
+            <!-- Stats Bar -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="glass-card p-4 rounded-xl">
+                    <div class="text-3xl font-display font-bold text-fia-red">44%</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Víctimas Motociclistas</div>
+                </div>
+                <div class="glass-card p-4 rounded-xl">
+                    <div class="text-3xl font-display font-bold text-fia-accent">12</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Meses de Proyecto</div>
+                </div>
+                <div class="glass-card p-4 rounded-xl">
+                    <div class="text-3xl font-display font-bold text-white">3</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Provincias Piloto</div>
+                </div>
+                <div class="glass-card p-4 rounded-xl">
+                    <div class="text-3xl font-display font-bold text-fia-red">2</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Herramientas Clave</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-fia-red text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="proyecto" class="py-20 bg-fia-gray relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-block bg-fia-red/10 border border-fia-red/30 px-3 py-1 rounded mb-4">
+                        <span class="font-tech text-sm uppercase tracking-wider text-fia-red">Sobre el Proyecto</span>
+                    </div>
+                    <h2 class="font-display text-4xl font-bold mb-6">
+                        Un enfoque <span class="text-fia-red">sistémico</span> para salvar vidas
+                    </h2>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        El proyecto SM4ALL Argentina, liderado por el Automóvil Club Argentino (ACA) con el respaldo de 
+                        <strong class="text-white">UNITAR</strong> y <strong class="text-white">FIA Región IV</strong>, 
+                        busca reducir la siniestralidad de motociclistas mediante el desarrollo de herramientas técnicas 
+                        de alta precisión.
+                    </p>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Casi la mitad (44%) de las muertes viales en Argentina involucran a usuarios de motos, 
+                        cifra que asciende al 56% en el NOA y 55% en el NEA. Nuestra respuesta: un 
+                        <strong class="text-fia-accent">Mapa Nacional de Puntos Críticos</strong> y un 
+                        <strong class="text-fia-accent">Manual de Buenas Prácticas</strong> basados en evidencia.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-fia-dark border border-fia-red/30 px-3 py-1 rounded-full text-sm font-tech uppercase">
+                            <i class="fas fa-map-marker-alt text-fia-red mr-2"></i>Georreferenciación
+                        </span>
+                        <span class="bg-fia-dark border border-fia-red/30 px-3 py-1 rounded-full text-sm font-tech uppercase">
+                            <i class="fas fa-book text-fia-red mr-2"></i>Infraestructura Segura
+                        </span>
+                        <span class="bg-fia-dark border border-fia-red/30 px-3 py-1 rounded-full text-sm font-tech uppercase">
+                            <i class="fas fa-users text-fia-red mr-2"></i>Enfoque Sistema Seguro
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="absolute inset-0 bg-fia-red/20 blur-2xl rounded-full"></div>
+                    <div class="relative bg-fia-dark border border-fia-red/20 rounded-2xl p-8">
+                        <h3 class="font-display text-xl font-bold mb-6 text-fia-red">Aliados Estratégicos</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4 p-3 bg-fia-light rounded-lg hover:bg-fia-red/10 transition-colors cursor-pointer">
+                                <div class="w-12 h-12 bg-fia-red/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-car text-fia-red text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold">Automóvil Club Argentino</div>
+                                    <div class="text-sm text-gray-400">FIA Club • Implementador líder</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-4 p-3 bg-fia-light rounded-lg hover:bg-blue-500/10 transition-colors cursor-pointer">
+                                <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-landmark text-blue-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold">Agencia Nacional de Seguridad Vial</div>
+                                    <div class="text-sm text-gray-400">Datos oficiales • Política pública</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-4 p-3 bg-fia-light rounded-lg hover:bg-green-500/10 transition-colors cursor-pointer">
+                                <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-globe-americas text-green-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold">UNITAR</div>
+                                    <div class="text-sm text-gray-400">ONU • Cooperación técnica</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-4 p-3 bg-fia-light rounded-lg hover:bg-purple-500/10 transition-colors cursor-pointer">
+                                <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-flag-checkered text-purple-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold">FIA Región IV</div>
+                                    <div class="text-sm text-gray-400">Coordinación regional</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Section -->
+    <section id="avances" class="py-20 bg-fia-dark relative overflow-hidden">
+        <div class="absolute inset-0 hero-grid opacity-20"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold mb-4">Estado de <span class="text-fia-red">Avance</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Seguimiento en tiempo real del desarrollo del proyecto SM4ALL Argentina</p>
+            </div>
+            
+            <!-- Progress Cards -->
+            <div class="grid md:grid-cols-4 gap-6 mb-12">
+                <div class="glass-card p-6 rounded-2xl hover-lift">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-fia-red/20 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-rocket text-fia-red text-xl"></i>
+                        </div>
+                        <span class="text-fia-accent font-display font-bold">100%</span>
+                    </div>
+                    <h3 class="font-tech font-bold text-lg uppercase mb-2">Fase 1: Inicio</h3>
+                    <p class="text-sm text-gray-400 mb-3">Corpus teórico y equipos conformados</p>
+                    <div class="w-full bg-fia-light rounded-full h-2">
+                        <div class="bg-fia-red h-2 rounded-full" style="width: 100%"></div>
+                    </div>
+                    <div class="mt-3 text-xs text-fia-red font-tech">COMPLETADO • Dic 2024 - Mar 2025</div>
+                </div>
+                
+                <div class="glass-card p-6 rounded-2xl hover-lift border-fia-red/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-fia-red rounded-xl flex items-center justify-center animate-pulse">
+                            <i class="fas fa-search-location text-white text-xl"></i>
+                        </div>
+                        <span class="text-fia-red font-display font-bold">65%</span>
+                    </div>
+                    <h3 class="font-tech font-bold text-lg uppercase mb-2 text-fia-red">Fase 2: Diagnóstico</h3>
+                    <p class="text-sm text-gray-400 mb-3">Recolección y validación de datos</p>
+                    <div class="w-full bg-fia-light rounded-full h-2">
+                        <div class="bg-fia-red h-2 rounded-full animate-pulse" style="width: 65%"></div>
+                    </div>
+                    <div class="mt-3 text-xs text-fia-red font-tech">EN PROGRESO • Abr - Jun 2025</div>
+                </div>
+                
+                <div class="glass-card p-6 rounded-2xl hover-lift">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-gray-700 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-tools text-gray-400 text-xl"></i>
+                        </div>
+                        <span class="text-gray-500 font-display font-bold">0%</span>
+                    </div>
+                    <h3 class="font-tech font-bold text-lg uppercase mb-2 text-gray-400">Fase 3: Desarrollo</h3>
+                    <p class="text-sm text-gray-500 mb-3">Mapa y Manual en construcción</p>
+                    <div class="w-full bg-fia-light rounded-full h-2">
+                        <div class="bg-gray-600 h-2 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <div class="mt-3 text-xs text-gray-500 font-tech">PENDIENTE • Jul - Oct 2025</div>
+                </div>
+                
+                <div class="glass-card p-6 rounded-2xl hover-lift">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-gray-700 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-bullhorn text-gray-400 text-xl"></i>
+                        </div>
+                        <span class="text-gray-500 font-display font-bold">0%</span>
+                    </div>
+                    <h3 class="font-tech font-bold text-lg uppercase mb-2 text-gray-400">Fase 4: Socialización</h3>
+                    <p class="text-sm text-gray-500 mb-3">Lanzamiento y difusión nacional</p>
+                    <div class="w-full bg-fia-light rounded-full h-2">
+                        <div class="bg-gray-600 h-2 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <div class="mt-3 text-xs text-gray-500 font-tech">PENDIENTE • Nov - Dic 2025</div>
+                </div>
+            </div>
+            
+            <!-- Timeline -->
+            <div class="glass-card p-8 rounded-2xl">
+                <h3 class="font-display text-2xl font-bold mb-8 text-center">Línea de Tiempo del Proyecto</h3>
+                
+                <div class="relative">
+                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 timeline-line rounded-full"></div>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-center justify-between">
+                            <div class="w-5/12 text-right pr-8">
+                                <div class="bg-fia-red/20 border border-fia-red/40 p-4 rounded-xl">
+                                    <div class="font-tech font-bold text-fia-red">DICIEMBRE 2024</div>
+                                    <div class="text-sm text-gray-300">Lanzamiento oficial del proyecto</div>
+                                </div>
+                            </div>
+                            <div class="w-4 h-4 bg-fia-red rounded-full border-4 border-fia-dark z-10"></div>
+                            <div class="w-5/12"></div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="w-5/12"></div>
+                            <div class="w-4 h-4 bg-fia-red rounded-full border-4 border-fia-dark z-10 animate-pulse"></div>
+                            <div class="w-5/12 pl-8">
+                                <div class="bg-fia-light border border-fia-accent/40 p-4 rounded-xl">
+                                    <div class="font-tech font-bold text-fia-accent">MAYO 2025</div>
+                                    <div class="text-sm text-gray-300">Validación de datos provincias piloto</div>
+                                    <div class="text-xs text-fia-red mt-1">• Buenos Aires<br>• Córdoba<br>• Mendoza</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="w-5/12 text-right pr-8">
+                                <div class="bg-fia-light border border-gray-600 p-4 rounded-xl opacity-60">
+                                    <div class="font-tech font-bold text-gray-400">AGOSTO 2025</div>
+                                    <div class="text-sm text-gray-500">Beta del Mapa Nacional</div>
+                                </div>
+                            </div>
+                            <div class="w-4 h-4 bg-gray-600 rounded-full border-4 border-fia-dark z-10"></div>
+                            <div class="w-5/12"></div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="w-5/12"></div>
+                            <div class="w-4 h-4 bg-gray-600 rounded-full border-4 border-fia-dark z-10"></div>
+                            <div class="w-5/12 pl-8">
+                                <div class="bg-fia-light border border-gray-600 p-4 rounded-xl opacity-60">
+                                    <div class="font-tech font-bold text-gray-400">NOVIEMBRE 2025</div>
+                                    <div class="text-sm text-gray-500">Lanzamiento oficial Mapa y Manual</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="herramientas" class="py-20 bg-fia-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold mb-4">Herramientas <span class="text-fia-red">Clave</span></h2>
+                <p class="text-gray-400">Dos productos tecnológicos para transformar la seguridad vial motociclista</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Map Tool -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift group">
+                    <div class="h-48 bg-gradient-to-br from-fia-red/20 to-fia-dark relative overflow-hidden">
+                        <div class="absolute inset-0 hero-grid opacity-50"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-map-marked-alt text-6xl text-fia-red/50 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-fia-red text-white text-xs font-bold px-3 py-1 rounded-full">
+                            EN DESARROLLO
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-display text-2xl font-bold mb-3">Mapa Nacional de Puntos Críticos</h3>
+                        <p class="text-gray-400 mb-6">
+                            Plataforma georreferenciada interactiva que identifica, caracteriza y mapea los puntos 
+                            de mayor siniestralidad motociclista en todo el territorio argentino.
+                        </p>
+                        
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center gap-3 text-sm">
+                                <i class="fas fa-check-circle text-fia-red"></i>
+                                <span>Datos georreferenciados de siniestralidad</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <i class="fas fa-check-circle text-fia-red"></i>
+                                <span>Filtros por provincia, tipo de siniestro y severidad</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <i class="fas fa-check-circle text-fia-red"></i>
+                                <span>Acceso público y gratuito</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <i class="fas fa-check-circle text-fia-red"></i>
+                                <span>Actualización periódica con datos oficiales ANSV</span>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-fia-red/10 border border-fia-red text-fia-red font-tech uppercase tracking-wider py-3 rounded-lg hover:bg-fia-red hover:text-white transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-lock"></i>
+                            Disponible Agosto 2025
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Manual Tool -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift group">
+                    <div class="h-48 bg-gradient-to-br from-fia-accent/20 to-fia-dark relative overflow-hidden">
+                        <div class="absolute inset-0 hero-grid opacity-50"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-book text-6xl text-fia-accent/50 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-fia-accent text-fia-dark text-xs font-bold px-3 py-1 rounded-full">
+                            EN REDACCIÓN
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-display text-2xl font-bold mb-3">Manual de Buenas Prácticas</h3>
+                        <p class="text-gray-400 mb-6">
+                            Guía técnica completa para el diseño, adaptación y gestión de infraestructura vial 
+                            segura con perspectiva motociclista, basada en evidencia del AMBA.
+                        </p>
+                        
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center gap-3 text-sm">
+                                <i class="fas fa-check-circle text-fia-accent"></i>
+                                <span>Lineamientos basados en observaciones de campo</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <i class="fas fa-check-circle text-fia-accent"></i>
+                                <span>7 casos de estudio en puntos críticos del AMBA</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <i class="fas fa-check-circle text-fia-accent"></i>
+                                <span>Criterios iRAP y estándares internacionales</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <i class="fas fa-check-circle text-fia-accent"></i>
+                                <span>Soluciones replicables para todo el país</span>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-fia-accent/10 border border-fia-accent text-fia-accent font-tech uppercase tracking-wider py-3 rounded-lg hover:bg-fia-accent hover:text-fia-dark transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-lock"></i>
+                            Disponible Noviembre 2025
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Dashboard Preview -->
+    <section id="datos" class="py-20 bg-fia-dark relative">
+        <div class="absolute inset-0 hero-grid opacity-20"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-4xl font-bold mb-4">Datos de <span class="text-fia-red">Siniestralidad</span></h2>
+                <p class="text-gray-400">Visualización preliminar de la problemática en Argentina</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="text-5xl font-display font-bold text-fia-red mb-2">44%</div>
+                    <div class="text-gray-400 text-sm uppercase tracking-wider">Víctimas Fatales Nacionales</div>
+                    <div class="mt-3 text-xs text-gray-500">Motociclistas representan casi la mitad de muertes viales</div>
+                </div>
+                
+                <div class="glass-card p-6 rounded-2xl text-center border-fia-accent/30">
+                    <div class="text-5xl font-display font-bold text-fia-accent mb-2">56%</div>
+                    <div class="text-gray-400 text-sm uppercase tracking-wider">Región NOA</div>
+                    <div class="mt-3 text-xs text-gray-500">Noroeste Argentino • Mayor concentración del país</div>
+                </div>
+                
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="text-5xl font-display font-bold text-white mb-2">15-34</div>
+                    <div class="text-gray-400 text-sm uppercase tracking-wider">Años Edad Crítica</div>
+                    <div class="mt-3 text-xs text-gray-500">Grupo etario de mayor vulnerabilidad</div>
+                </div>
+            </div>
+            
+            <!-- Chart Container -->
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="font-tech text-lg uppercase tracking-wider mb-4 text-center">Comparativa Regional de Siniestralidad Motociclista</h3>
+                <canvas id="siniestralidadChart" height="100"></canvas>
+            </div>
+            
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-500">
+                    <i class="fas fa-database mr-2"></i>
+                    Fuente: Agencia Nacional de Seguridad Vial (ANSV) • 2024
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-20 bg-fia-gray">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-2xl p-8 md:p-12">
+                <div class="text-center mb-8">
+                    <h2 class="font-display text-3xl font-bold mb-4">Contacto <span class="text-fia-red">SM4ALL</span></h2>
+                    <p class="text-gray-400">¿Tenés consultas sobre el proyecto? Contactá al equipo técnico.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-fia-red/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-fia-red"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-sm uppercase tracking-wider text-gray-400">Email</div>
+                                <div class="text-white">sm4all@aca.org.ar</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-fia-red/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-fia-red"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-sm uppercase tracking-wider text-gray-400">Sede</div>
+                                <div class="text-white">Automóvil Club Argentino</div>
+                                <div class="text-sm text-gray-500">Av. del Libertador 1850, CABA</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-fia-red/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-users text-fia-red"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-sm uppercase tracking-wider text-gray-400">Equipo Técnico</div>
+                                <div class="text-white">Luis Betnaza • Andrea Cabanelas</div>
+                                <div class="text-sm text-gray-500">Delegación Movilidad FIA ACA</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-fia-dark p-4 rounded-lg border border-fia-red/20">
+                            <div class="font-tech text-sm uppercase tracking-wider text-fia-red mb-2">Newsletter</div>
+                            <p class="text-sm text-gray-400 mb-3">Recibí actualizaciones sobre avances del proyecto</p>
+                            <div class="flex gap-2">
+                                <input type="email" placeholder="tu@email.com" 
+                                       class="flex-1 bg-fia-light border border-gray-700 rounded px-3 py-2 text-sm focus:outline-none focus:border-fia-red">
+                                <button class="bg-fia-red hover:bg-red-700 text-white px-4 py-2 rounded text-sm font-bold transition-colors">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4 justify-center md:justify-start">
+                            <a href="#" class="w-10 h-10 bg-fia-light rounded-full flex items-center justify-center hover:bg-fia-red transition-colors">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-fia-light rounded-full flex items-center justify-center hover:bg-fia-red transition-colors">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-fia-light rounded-full flex items-center justify-center hover:bg-fia-red transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-fia-light rounded-full flex items-center justify-center hover:bg-fia-red transition-colors">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-fia-dark border-t border-fia-red/20 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-fia-red rounded-lg flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-white"></i>
+                        </div>
+                        <div>
+                            <div class="font-display font-bold text-lg">SM4ALL Argentina</div>
+                            <div class="text-xs text-gray-500">Safe Mobility 4 All & 4 Life</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400 max-w-md">
+                        Proyecto de seguridad vial para motociclistas desarrollado por el Automóvil Club Argentino 
+                        con el apoyo de FIA Región IV y UNITAR.
+                    </p>
+                </div>
+                
+                <div>
+                    <div class="font-tech text-sm uppercase tracking-wider text-gray-400 mb-4">Enlaces</div>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-fia-red transition-colors">FIA Foundation</a></li>
+                        <li><a href="#" class="hover:text-fia-red transition-colors">UNITAR</a></li>
+                        <li><a href="#" class="hover:text-fia-red transition-colors">ANSV Argentina</a></li>
+                        <li><a href="#" class="hover:text-fia-red transition-colors">ACA Movilidad</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <div class="font-tech text-sm uppercase tracking-wider text-gray-400 mb-4">Legal</div>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-fia-red transition-colors">Términos de uso</a></li>
+                        <li><a href="#" class="hover:text-fia-red transition-colors">Privacidad de datos</a></li>
+                        <li><a href="#" class="hover:text-fia-red transition-colors">Licencia Creative Commons</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-sm text-gray-500">
+                    © 2025 Automóvil Club Argentino • FIA Region IV • UNITAR
+                </div>
+                <div class="checkered h-2 w-32 rounded"></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.getElementById('mobileMenu').classList.add('hidden');
+                }
+            });
+        });
+        
+        // Chart.js Configuration
+        const ctx = document.getElementById('siniestralidadChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Nacional', 'NOA', 'NEA', 'AMBA', 'Cuyo', 'Patagonia'],
+                datasets: [{
+                    label: '% Víctimas Fatales Motociclistas',
+                    data: [44, 56, 55, 38, 42, 35],
+                    backgroundColor: [
+                        'rgba(225, 6, 0, 0.8)',
+                        'rgba(255, 215, 0, 0.8)',
+                        'rgba(255, 215, 0, 0.8)',
+                        'rgba(225, 6, 0, 0.6)',
+                        'rgba(225, 6, 0, 0.6)',
+                        'rgba(128, 128, 128, 0.6)'
+                    ],
+                    borderColor: [
+                        '#E10600',
+                        '#FFD700',
+                        '#FFD700',
+                        '#E10600',
+                        '#E10600',
+                        '#808080'
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 60,
+                        ticks: {
+                            color: '#9CA3AF',
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#9CA3AF'
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('slide-in');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.glass-card').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
